@@ -1,6 +1,6 @@
 ﻿namespace FoodRecipeManager
 {
-    partial class Form1
+    partial class MainPage
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,15 +29,12 @@
         private void InitializeComponent()
         {
             NavigationBar = new FlowLayoutPanel();
-            MainPanel = new Panel();
             panel1 = new Panel();
             button1 = new Button();
             panel2 = new Panel();
             button2 = new Button();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            button3 = new Button();
+            MainPanel = new Panel();
             NavigationBar.SuspendLayout();
-            MainPanel.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -52,16 +49,6 @@
             NavigationBar.Name = "NavigationBar";
             NavigationBar.Size = new Size(176, 627);
             NavigationBar.TabIndex = 0;
-            // 
-            // MainPanel
-            // 
-            MainPanel.Controls.Add(button3);
-            MainPanel.Controls.Add(flowLayoutPanel1);
-            MainPanel.Dock = DockStyle.Right;
-            MainPanel.Location = new Point(182, 0);
-            MainPanel.Name = "MainPanel";
-            MainPanel.Size = new Size(869, 627);
-            MainPanel.TabIndex = 1;
             // 
             // panel1
             // 
@@ -99,36 +86,24 @@
             button2.Text = "Discover ";
             button2.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanel1
+            // MainPanel
             // 
-            flowLayoutPanel1.BackColor = SystemColors.ActiveCaption;
-            flowLayoutPanel1.Location = new Point(127, 139);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(723, 459);
-            flowLayoutPanel1.TabIndex = 0;
+            MainPanel.Dock = DockStyle.Right;
+            MainPanel.Location = new Point(182, 0);
+            MainPanel.Name = "MainPanel";
+            MainPanel.Size = new Size(869, 627);
+            MainPanel.TabIndex = 1;
             // 
-            // button3
-            // 
-            button3.BackColor = SystemColors.MenuHighlight;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.ForeColor = SystemColors.ButtonHighlight;
-            button3.Location = new Point(126, 111);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 1;
-            button3.Text = "Create";
-            button3.UseVisualStyleBackColor = false;
-            // 
-            // Form1
+            // MainPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1051, 627);
             Controls.Add(MainPanel);
             Controls.Add(NavigationBar);
-            Name = "Form1";
+            Name = "MainPage";
+            Load += MainPage_Load;
             NavigationBar.ResumeLayout(false);
-            MainPanel.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ResumeLayout(false);
@@ -142,7 +117,5 @@
         private Button button1;
         private Panel panel2;
         private Button button2;
-        private Button button3;
-        private FlowLayoutPanel flowLayoutPanel1;
     }
 }
