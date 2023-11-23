@@ -206,6 +206,7 @@
             // 
             // FoodTypeCB
             // 
+            FoodTypeCB.DropDownStyle = ComboBoxStyle.DropDownList;
             FoodTypeCB.FormattingEnabled = true;
             FoodTypeCB.Items.AddRange(new object[] { "Main dish", "Side dish", "Dessert", "Appetisers", "Soups", "Salads" });
             FoodTypeCB.Location = new Point(269, 31);
@@ -245,6 +246,7 @@
             // 
             // RatingCB
             // 
+            RatingCB.DropDownStyle = ComboBoxStyle.DropDownList;
             RatingCB.FormattingEnabled = true;
             RatingCB.Items.AddRange(new object[] { "5", "4", "3", "2", "1", "0" });
             RatingCB.Location = new Point(116, 101);
