@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewYourRecipes));
             AddNewRecipe = new Button();
             RecipeViewer = new FlowLayoutPanel();
@@ -53,6 +54,7 @@
             AddingIngreBTN = new Button();
             AddIndegrientsGB = new GroupBox();
             FormsMainPanel = new Panel();
+            contextMenuStrip1 = new ContextMenuStrip(components);
             AddRecipePanel.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -294,6 +296,7 @@
             AddingIngreBTN.TabIndex = 1;
             AddingIngreBTN.Text = "+ Add Ingredient";
             AddingIngreBTN.UseVisualStyleBackColor = true;
+            AddingIngreBTN.Click += AddingIngreBTN_Click;
             // 
             // AddIndegrientsGB
             // 
@@ -308,11 +311,17 @@
             // FormsMainPanel
             // 
             FormsMainPanel.Controls.Add(AddNewRecipe);
+            FormsMainPanel.Controls.Add(AddRecipePanel);
             FormsMainPanel.Controls.Add(RecipeViewer);
             FormsMainPanel.Location = new Point(0, 0);
             FormsMainPanel.Name = "FormsMainPanel";
             FormsMainPanel.Size = new Size(869, 628);
             FormsMainPanel.TabIndex = 5;
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(61, 4);
             // 
             // ViewYourRecipes
             // 
@@ -320,7 +329,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(869, 627);
             Controls.Add(FormsMainPanel);
-            Controls.Add(AddRecipePanel);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ViewYourRecipes";
             Text = "ViewYourRecipes";
@@ -363,5 +371,6 @@
         private RadioButton IconRB2;
         private RadioButton IconRB1;
         private Panel FormsMainPanel;
+        private ContextMenuStrip contextMenuStrip1;
     }
 }
