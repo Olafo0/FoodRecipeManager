@@ -33,6 +33,7 @@
             AddNewRecipe = new Button();
             RecipeViewer = new FlowLayoutPanel();
             AddRecipePanel = new Panel();
+            CloseAddRecipePanel = new Button();
             CreateNewRecipe = new Button();
             groupBox1 = new GroupBox();
             IconRB3 = new RadioButton();
@@ -90,6 +91,7 @@
             // AddRecipePanel
             // 
             AddRecipePanel.BackColor = SystemColors.ControlLightLight;
+            AddRecipePanel.Controls.Add(CloseAddRecipePanel);
             AddRecipePanel.Controls.Add(CreateNewRecipe);
             AddRecipePanel.Controls.Add(groupBox1);
             AddRecipePanel.Controls.Add(RecipeDetailsGB);
@@ -100,6 +102,18 @@
             AddRecipePanel.Size = new Size(648, 628);
             AddRecipePanel.TabIndex = 4;
             AddRecipePanel.Visible = false;
+            // 
+            // CloseAddRecipePanel
+            // 
+            CloseAddRecipePanel.BackColor = Color.LightCoral;
+            CloseAddRecipePanel.FlatStyle = FlatStyle.Flat;
+            CloseAddRecipePanel.Location = new Point(574, 3);
+            CloseAddRecipePanel.Name = "CloseAddRecipePanel";
+            CloseAddRecipePanel.Size = new Size(74, 26);
+            CloseAddRecipePanel.TabIndex = 9;
+            CloseAddRecipePanel.Text = "Close";
+            CloseAddRecipePanel.UseVisualStyleBackColor = false;
+            CloseAddRecipePanel.Click += CloseAddRecipePanel_Click;
             // 
             // CreateNewRecipe
             // 
@@ -319,6 +333,7 @@
             FormsMainPanel.Name = "FormsMainPanel";
             FormsMainPanel.Size = new Size(869, 628);
             FormsMainPanel.TabIndex = 5;
+            FormsMainPanel.Paint += FormsMainPanel_Paint;
             // 
             // contextMenuStrip1
             // 
@@ -374,5 +389,6 @@
         private RadioButton IconRB1;
         private Panel FormsMainPanel;
         private ContextMenuStrip contextMenuStrip1;
+        private Button CloseAddRecipePanel;
     }
 }

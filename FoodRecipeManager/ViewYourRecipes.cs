@@ -52,6 +52,23 @@ namespace FoodRecipeManager
                 xPosOfIngBtn = 6;
                 yPosOfIngBtn = 26;
 
+                //List<string> ContainerForIng = new List<string>();
+                string ContainerForIng = "";
+
+                for (int i = 0; i < TextBoxesInGB; i++)
+                {
+                    string tempString = "";
+                    tempString = AddIndegrientsGB.Controls[i].Text;
+                    ContainerForIng += $"{tempString} ";
+                    //tempString = AddIndegrientsGB.Controls[i].Text;
+                    //ContainerForIng.Add(tempString);
+                }
+
+                MessageBox.Show(ContainerForIng);
+
+
+
+
                 // Removing the TB
                 for (int i = TextBoxesInGB - 1; i >= 0; i--)
                 {
@@ -152,8 +169,52 @@ namespace FoodRecipeManager
             }
             else { }
 
+        }
 
+        private void CloseAddRecipePanel_Click(object sender, EventArgs e)
+        {
+            AddRecipePanel.Location = new(999, 0);
+            AddRecipePanel.Visible = false;
+        }
 
+        private void FormsMainPanel_Paint(object sender, PaintEventArgs e)
+        {
+            //// Making a small viewable 
+            //Panel newPanel = new Panel();
+            //newPanel.Size = new Size(200, 195);
+            //newPanel.Name = "RecipePanel" + CurrentPagesMade;
+            //newPanel.BackColor = Color.White;
+
+            //Button btn = new Button();
+            //btn.Name = "RecipeViewBtn" + CurrentPagesMade;
+            //btn.Text = "Temp";
+            //btn.Location = new(20, 70);
+            //newPanel.Controls.Add(btn);
+
+            //Label Ratinglabel = new Label();
+            //Ratinglabel.Text = "Rating :";
+            //Ratinglabel.Location = new(10, 160);
+            //newPanel.Controls.Add(Ratinglabel);
+
+            //Label Titlelabel = new Label();
+            //Titlelabel.Name = "RecipeTitleLabel" + CurrentPagesMade;
+            //Titlelabel.Text = RecipeTitle;
+
+            //if (RecipeTitle.Length > 25)
+            //{
+            //    Titlelabel.AutoEllipsis = true;
+            //    Titlelabel.AutoSize = false;
+            //}
+            //else
+            //{
+            //    Titlelabel.AutoEllipsis = false;
+            //    Titlelabel.AutoSize = true;
+            //}
+            //Titlelabel.Location = new(10, 110);
+            //newPanel.Controls.Add(Titlelabel);
+
+            //CurrentPagesMade += 1;
+            //RecipeViewer.Controls.Add(newPanel);
         }
     }
 }
@@ -166,3 +227,8 @@ namespace FoodRecipeManager
 
 //Add 150 to X
 //Max reach 456 (X)
+
+
+// What to do Save to a database 
+// To save ingriadents iterate through textbox in GroupBox append it to a string and save it to a database 
+// Homeload automatically the data from the database.
