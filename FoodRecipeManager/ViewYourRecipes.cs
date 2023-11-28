@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,6 +15,13 @@ namespace FoodRecipeManager
     public partial class ViewYourRecipes : Form
     {
 
+        string connectionString = "Data Source=LC21205XX\\SQLEXPRESS;Initial Catalog=x;User ID =sa;Password=sa2023;";
+        SqlConnection cnn;
+        SqlCommand cmd;
+
+        List<RecipeDB> recipeItems = new List<RecipeDB>();
+
+        int recipeID = 0;
         int CurrentPagesMade = 0;
 
 
@@ -75,10 +84,17 @@ namespace FoodRecipeManager
                     AddIndegrientsGB.Controls.Remove(AddIndegrientsGB.Controls[i]);
                 }
 
+                int CurrentRecipeID = recipeID + 1;
                 string RecipeTitle = RecipesNameTB.Text;
                 string FoodType = FoodTypeCB.Text;
                 string AuthorName = AuthorNameTB.Text;
                 int Rating = int.Parse(RatingCB.Text);
+
+                RecipeDB CurrentRecipe = new RecipeDB(CurrentRecipeID, RecipeTitle, FoodType, AuthorName, Rating, ContainerForIng);
+                recipeItems.Add(CurrentRecipe);
+
+                
+
 
 
                 RecipesNameTB.Text = "";
@@ -179,42 +195,42 @@ namespace FoodRecipeManager
 
         private void FormsMainPanel_Paint(object sender, PaintEventArgs e)
         {
-            //// Making a small viewable 
-            //Panel newPanel = new Panel();
-            //newPanel.Size = new Size(200, 195);
-            //newPanel.Name = "RecipePanel" + CurrentPagesMade;
-            //newPanel.BackColor = Color.White;
+            // Making a small viewable 
+            Panel newPanel = new Panel();
+            newPanel.Size = new Size(200, 195);
+            newPanel.Name = "RecipePanel" + CurrentPagesMade;
+            newPanel.BackColor = Color.White;
 
-            //Button btn = new Button();
-            //btn.Name = "RecipeViewBtn" + CurrentPagesMade;
-            //btn.Text = "Temp";
-            //btn.Location = new(20, 70);
-            //newPanel.Controls.Add(btn);
+            Button btn = new Button();
+            btn.Name = "RecipeViewBtn" + CurrentPagesMade;
+            btn.Text = "Temp";
+            btn.Location = new(20, 70);
+            newPanel.Controls.Add(btn);
 
-            //Label Ratinglabel = new Label();
-            //Ratinglabel.Text = "Rating :";
-            //Ratinglabel.Location = new(10, 160);
-            //newPanel.Controls.Add(Ratinglabel);
+            Label Ratinglabel = new Label();
+            Ratinglabel.Text = "Rating :";
+            Ratinglabel.Location = new(10, 160);
+            newPanel.Controls.Add(Ratinglabel);
 
-            //Label Titlelabel = new Label();
-            //Titlelabel.Name = "RecipeTitleLabel" + CurrentPagesMade;
-            //Titlelabel.Text = RecipeTitle;
+            Label Titlelabel = new Label();
+            Titlelabel.Name = "RecipeTitleLabel" + CurrentPagesMade;
+            Titlelabel.Text = RecipeTitle;
 
-            //if (RecipeTitle.Length > 25)
-            //{
-            //    Titlelabel.AutoEllipsis = true;
-            //    Titlelabel.AutoSize = false;
-            //}
-            //else
-            //{
-            //    Titlelabel.AutoEllipsis = false;
-            //    Titlelabel.AutoSize = true;
-            //}
-            //Titlelabel.Location = new(10, 110);
-            //newPanel.Controls.Add(Titlelabel);
+            if (RecipeTitle.Length > 25)
+            {
+                Titlelabel.AutoEllipsis = true;
+                Titlelabel.AutoSize = false;
+            }
+            else
+            {
+                Titlelabel.AutoEllipsis = false;
+                Titlelabel.AutoSize = true;
+            }
+            Titlelabel.Location = new(10, 110);
+            newPanel.Controls.Add(Titlelabel);
 
-            //CurrentPagesMade += 1;
-            //RecipeViewer.Controls.Add(newPanel);
+            CurrentPagesMade += 1;
+            RecipeViewer.Controls.Add(newPanel);
         }
     }
 }
