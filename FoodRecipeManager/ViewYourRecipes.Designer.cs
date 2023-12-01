@@ -329,9 +329,9 @@
             FormsMainPanel.Controls.Add(AddNewRecipe);
             FormsMainPanel.Controls.Add(AddRecipePanel);
             FormsMainPanel.Controls.Add(RecipeViewer);
-            FormsMainPanel.Location = new Point(0, 0);
+            FormsMainPanel.Location = new Point(-1, -3);
             FormsMainPanel.Name = "FormsMainPanel";
-            FormsMainPanel.Size = new Size(869, 628);
+            FormsMainPanel.Size = new Size(870, 631);
             FormsMainPanel.TabIndex = 5;
             FormsMainPanel.Paint += FormsMainPanel_Paint;
             // 
@@ -349,6 +349,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "ViewYourRecipes";
             Text = "ViewYourRecipes";
+            Load += ViewYourRecipes_Load;
             AddRecipePanel.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

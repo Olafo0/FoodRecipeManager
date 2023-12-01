@@ -8,15 +8,14 @@ namespace FoodRecipeManager
 {
     public class RecipeDB
     {
+        public int RecipeID { get; set; }
+        public string? RecipeName { get; set; }
+        public string? Type { get; set; }
+        public string? Author { get; set; }
+        public int Rating {  get; set; }
+        public string? Ingredients { get; set; }
 
-        //https://www.codeproject.com/Tips/825532/Read-Insert-Data-Using-Stored-Procedures-in-Csharp
-        int RecipeID { get; set; }
-        string RecipeName { get; set; }
-        string Type { get; set; }
-        string Author { get; set; }
-        int Rating {  get; set; }
-        string Ingredients { get; set; }
-        public RecipeDB (int RecipeID, string RecipeName, string Type, string Author, int Rating, string Ingredients)
+        public RecipeDB (int RecipeID, string? RecipeName, string? Type, string? Author, int Rating, string? Ingredients)
         {
             this.RecipeID = RecipeID;
             this.RecipeName = RecipeName;

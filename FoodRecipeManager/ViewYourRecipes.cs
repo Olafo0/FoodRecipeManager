@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,7 +16,7 @@ namespace FoodRecipeManager
     public partial class ViewYourRecipes : Form
     {
 
-        string connectionString = "Data Source=LC21205XX\\SQLEXPRESS;Initial Catalog=x;User ID =sa;Password=sa2023;";
+        string connectionString = "Data Source=LC21205XX\\SQLEXPRESS;Initial Catalog=RecipeManagerDB;User ID =sa;Password=sa2023;";
         SqlConnection cnn;
         SqlCommand cmd;
 
@@ -36,6 +37,7 @@ namespace FoodRecipeManager
         public ViewYourRecipes()
         {
             InitializeComponent();
+             
         }
 
         private void AddNewRecipe_Click(object sender, EventArgs e)
@@ -46,6 +48,8 @@ namespace FoodRecipeManager
             AddRecipePanel.Visible = true;
             AddRecipePanel.BringToFront();
         }
+
+
 
         private void CreateNewRecipe_Click(object sender, EventArgs e)
         {
@@ -73,11 +77,6 @@ namespace FoodRecipeManager
                     //ContainerForIng.Add(tempString);
                 }
 
-                MessageBox.Show(ContainerForIng);
-
-
-
-
                 // Removing the TB
                 for (int i = TextBoxesInGB - 1; i >= 0; i--)
                 {
@@ -93,23 +92,15 @@ namespace FoodRecipeManager
                 RecipeDB CurrentRecipe = new RecipeDB(CurrentRecipeID, RecipeTitle, FoodType, AuthorName, Rating, ContainerForIng);
                 recipeItems.Add(CurrentRecipe);
 
-                
-
-
-
                 RecipesNameTB.Text = "";
                 FoodTypeCB.SelectedItem = null;
                 AuthorNameTB.Text = "";
                 RatingCB.SelectedItem = null;
+
                 // Rating stars 
                 // here
                 // - - - - - 
-                IconRB1.Checked = false;
-                IconRB2.Checked = false;
-                IconRB3.Checked = false;
-
-
-                // Making a small viewable 
+                // Creating the panel
                 Panel newPanel = new Panel();
                 newPanel.Size = new Size(200, 195);
                 newPanel.Name = "RecipePanel" + CurrentPagesMade;
@@ -119,17 +110,19 @@ namespace FoodRecipeManager
                 btn.Name = "RecipeViewBtn" + CurrentPagesMade;
                 btn.Text = "Temp";
                 btn.Location = new(20, 70);
+                btn.Click += Btn_Click;
                 newPanel.Controls.Add(btn);
 
+                // Rating label
                 Label Ratinglabel = new Label();
-                Ratinglabel.Text = "Rating :";
+                Ratinglabel.Text = $"Rating: {Rating}";
                 Ratinglabel.Location = new(10, 160);
                 newPanel.Controls.Add(Ratinglabel);
 
+                //Name of recipe
                 Label Titlelabel = new Label();
                 Titlelabel.Name = "RecipeTitleLabel" + CurrentPagesMade;
                 Titlelabel.Text = RecipeTitle;
-
                 if (RecipeTitle.Length > 25)
                 {
                     Titlelabel.AutoEllipsis = true;
@@ -140,12 +133,18 @@ namespace FoodRecipeManager
                     Titlelabel.AutoEllipsis = false;
                     Titlelabel.AutoSize = true;
                 }
-                Titlelabel.Location = new(10, 110);
+                Titlelabel.Location = new(10, 120);
                 newPanel.Controls.Add(Titlelabel);
+
+                // Author label
+                Label AuthorLabel = new Label();
+                AuthorLabel.Name = "AutherLabel" + CurrentPagesMade;
+                AuthorLabel.Text = $"By: {Rating}";
+                AuthorLabel.Location = new(10, 140);
+                newPanel.Controls.Add(AuthorLabel);
 
                 CurrentPagesMade += 1;
                 RecipeViewer.Controls.Add(newPanel);
-                // - - - - - - 
 
 
                 FormsMainPanel.Visible = true;
@@ -154,6 +153,13 @@ namespace FoodRecipeManager
 
             }
 
+        }
+
+        // Gets the information from the button we clicked. 
+        private void Btn_Click(object? sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            MessageBox.Show(btn.Name);
         }
 
         private void AddingIngreBTN_Click(object sender, EventArgs e)
@@ -195,42 +201,127 @@ namespace FoodRecipeManager
 
         private void FormsMainPanel_Paint(object sender, PaintEventArgs e)
         {
-            // Making a small viewable 
-            Panel newPanel = new Panel();
-            newPanel.Size = new Size(200, 195);
-            newPanel.Name = "RecipePanel" + CurrentPagesMade;
-            newPanel.BackColor = Color.White;
+            //https://www.codeproject.com/Tips/825532/Read-Insert-Data-Using-Stored-Procedures-in-Csharp
+            //// Making a small viewable 
+            //Panel newPanel = new Panel();
+            //newPanel.Size = new Size(200, 195);
+            //newPanel.Name = "RecipePanel" + CurrentPagesMade;
+            //newPanel.BackColor = Color.White;
 
-            Button btn = new Button();
-            btn.Name = "RecipeViewBtn" + CurrentPagesMade;
-            btn.Text = "Temp";
-            btn.Location = new(20, 70);
-            newPanel.Controls.Add(btn);
+            //Button btn = new Button();
+            //btn.Name = "RecipeViewBtn" + CurrentPagesMade;
+            //btn.Text = "Temp";
+            //btn.Location = new(20, 70);
+            //newPanel.Controls.Add(btn);
 
-            Label Ratinglabel = new Label();
-            Ratinglabel.Text = "Rating :";
-            Ratinglabel.Location = new(10, 160);
-            newPanel.Controls.Add(Ratinglabel);
+            //Label Ratinglabel = new Label();
+            //Ratinglabel.Text = "Rating :";
+            //Ratinglabel.Location = new(10, 160);
+            //newPanel.Controls.Add(Ratinglabel);
 
-            Label Titlelabel = new Label();
-            Titlelabel.Name = "RecipeTitleLabel" + CurrentPagesMade;
-            Titlelabel.Text = RecipeTitle;
+            //Label Titlelabel = new Label();
+            //Titlelabel.Name = "RecipeTitleLabel" + CurrentPagesMade;
+            //Titlelabel.Text = RecipeTitle;
 
-            if (RecipeTitle.Length > 25)
+            //if (RecipeTitle.Length > 25)
+            //{
+            //    Titlelabel.AutoEllipsis = true;
+            //    Titlelabel.AutoSize = false;
+            //}
+            //else
+            //{
+            //    Titlelabel.AutoEllipsis = false;
+            //    Titlelabel.AutoSize = true;
+            //}
+            //Titlelabel.Location = new(10, 110);
+            //newPanel.Controls.Add(Titlelabel);
+
+            //CurrentPagesMade += 1;
+            //RecipeViewer.Controls.Add(newPanel);
+        }
+
+        private void ViewYourRecipes_Load(object sender, EventArgs e)
+        {
+            try
             {
-                Titlelabel.AutoEllipsis = true;
-                Titlelabel.AutoSize = false;
-            }
-            else
-            {
-                Titlelabel.AutoEllipsis = false;
-                Titlelabel.AutoSize = true;
-            }
-            Titlelabel.Location = new(10, 110);
-            newPanel.Controls.Add(Titlelabel);
+                cnn = new SqlConnection(connectionString);
+                cnn.Open();
+                cmd = new SqlCommand("OutputAllItems",cnn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int RecipeID = int.Parse(reader["RecipeID"].ToString());
+                        string? RecipeName = reader["RecipeName"].ToString();
+                        string? FoodType = reader["Type_"].ToString();
+                        string? Author = reader["Author_"].ToString();
+                        int Rating = int.Parse(reader["Rating"].ToString());
+                        string? Ingredients = reader["Ingredients"].ToString();
 
-            CurrentPagesMade += 1;
-            RecipeViewer.Controls.Add(newPanel);
+                        RecipeDB CurrentRecipe = new RecipeDB(RecipeID,RecipeName,FoodType, Author,Rating,Ingredients);
+                        recipeItems.Add(CurrentRecipe);
+
+                    }
+                }
+                cnn.Close();
+                cmd.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+            foreach (var recipe in recipeItems)
+            {
+                // Creating the panel
+                Panel newPanel = new Panel();
+                newPanel.Size = new Size(200, 195);
+                newPanel.Name = "RecipePanel" + CurrentPagesMade;
+                newPanel.BackColor = Color.White;
+
+                Button btn = new Button();
+                btn.Name = "RecipeViewBtn" + CurrentPagesMade;
+                btn.Text = "Temp";
+                btn.Location = new(20, 70);
+                newPanel.Controls.Add(btn);
+
+                // Rating label
+                Label Ratinglabel = new Label();
+                Ratinglabel.Text = $"Rating: {recipe.Rating.ToString()}";
+                Ratinglabel.Location = new(10, 160);
+                newPanel.Controls.Add(Ratinglabel);
+
+                //Name of recipe
+                Label Titlelabel = new Label();
+                Titlelabel.Name = "RecipeTitleLabel" + CurrentPagesMade;
+                Titlelabel.Text = recipe.RecipeName;
+                if (recipe.RecipeName.Length > 25)
+                {
+                    Titlelabel.AutoEllipsis = true;
+                    Titlelabel.AutoSize = false;
+                }
+                else
+                {
+                    Titlelabel.AutoEllipsis = false;
+                    Titlelabel.AutoSize = true;
+                }
+                Titlelabel.Location = new(10, 120);
+                newPanel.Controls.Add(Titlelabel);
+
+                // Author label
+                Label AuthorLabel = new Label();
+                AuthorLabel.Name = "AutherLabel" + CurrentPagesMade;
+                AuthorLabel.Text = $"By: {recipe.Author}";
+                AuthorLabel.Location = new(10, 140);
+                newPanel.Controls.Add(AuthorLabel);
+
+                CurrentPagesMade += 1;
+                RecipeViewer.Controls.Add(newPanel);
+            }
+
+
         }
     }
 }
