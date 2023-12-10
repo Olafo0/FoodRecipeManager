@@ -55,6 +55,20 @@
             AddingIngreBTN = new Button();
             AddIndegrientsGB = new GroupBox();
             FormsMainPanel = new Panel();
+            ViewingRecipePanel = new Panel();
+            CloseViewPanelBTN = new Button();
+            groupBox2 = new GroupBox();
+            RatingViewGB = new GroupBox();
+            RaingPicBoxView = new PictureBox();
+            RatingViewLB = new Label();
+            label14 = new Label();
+            RDViewGB = new GroupBox();
+            AuthorViewLB = new Label();
+            TypeViewLB = new Label();
+            label8 = new Label();
+            label7 = new Label();
+            RecipeNameViewLB = new Label();
+            label5 = new Label();
             contextMenuStrip1 = new ContextMenuStrip(components);
             AddRecipePanel.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -64,6 +78,10 @@
             RecipeDetailsGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)StarPB).BeginInit();
             FormsMainPanel.SuspendLayout();
+            ViewingRecipePanel.SuspendLayout();
+            RatingViewGB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)RaingPicBoxView).BeginInit();
+            RDViewGB.SuspendLayout();
             SuspendLayout();
             // 
             // AddNewRecipe
@@ -326,6 +344,7 @@
             // 
             // FormsMainPanel
             // 
+            FormsMainPanel.Controls.Add(ViewingRecipePanel);
             FormsMainPanel.Controls.Add(AddNewRecipe);
             FormsMainPanel.Controls.Add(AddRecipePanel);
             FormsMainPanel.Controls.Add(RecipeViewer);
@@ -334,6 +353,159 @@
             FormsMainPanel.Size = new Size(870, 631);
             FormsMainPanel.TabIndex = 5;
             FormsMainPanel.Paint += FormsMainPanel_Paint;
+            // 
+            // ViewingRecipePanel
+            // 
+            ViewingRecipePanel.BackColor = SystemColors.ControlLightLight;
+            ViewingRecipePanel.Controls.Add(CloseViewPanelBTN);
+            ViewingRecipePanel.Controls.Add(groupBox2);
+            ViewingRecipePanel.Controls.Add(RatingViewGB);
+            ViewingRecipePanel.Controls.Add(RDViewGB);
+            ViewingRecipePanel.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ViewingRecipePanel.Location = new Point(999, 0);
+            ViewingRecipePanel.Name = "ViewingRecipePanel";
+            ViewingRecipePanel.Size = new Size(600, 577);
+            ViewingRecipePanel.TabIndex = 5;
+            ViewingRecipePanel.Visible = false;
+            // 
+            // CloseViewPanelBTN
+            // 
+            CloseViewPanelBTN.BackColor = Color.LightCoral;
+            CloseViewPanelBTN.FlatStyle = FlatStyle.Flat;
+            CloseViewPanelBTN.Location = new Point(526, 0);
+            CloseViewPanelBTN.Name = "CloseViewPanelBTN";
+            CloseViewPanelBTN.Size = new Size(74, 26);
+            CloseViewPanelBTN.TabIndex = 10;
+            CloseViewPanelBTN.Text = "Close";
+            CloseViewPanelBTN.UseVisualStyleBackColor = false;
+            CloseViewPanelBTN.Click += CloseViewPanelBTN_Click;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            groupBox2.Location = new Point(18, 359);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(568, 201);
+            groupBox2.TabIndex = 4;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Ingredients";
+            // 
+            // RatingViewGB
+            // 
+            RatingViewGB.Controls.Add(RaingPicBoxView);
+            RatingViewGB.Controls.Add(RatingViewLB);
+            RatingViewGB.Controls.Add(label14);
+            RatingViewGB.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            RatingViewGB.Location = new Point(280, 216);
+            RatingViewGB.Name = "RatingViewGB";
+            RatingViewGB.Size = new Size(306, 137);
+            RatingViewGB.TabIndex = 4;
+            RatingViewGB.TabStop = false;
+            RatingViewGB.Text = "Rating";
+            // 
+            // RaingPicBoxView
+            // 
+            RaingPicBoxView.Location = new Point(46, 73);
+            RaingPicBoxView.Name = "RaingPicBoxView";
+            RaingPicBoxView.Size = new Size(217, 42);
+            RaingPicBoxView.TabIndex = 2;
+            RaingPicBoxView.TabStop = false;
+            // 
+            // RatingViewLB
+            // 
+            RatingViewLB.AutoSize = true;
+            RatingViewLB.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            RatingViewLB.Location = new Point(112, 34);
+            RatingViewLB.Name = "RatingViewLB";
+            RatingViewLB.Size = new Size(38, 15);
+            RatingViewLB.TabIndex = 1;
+            RatingViewLB.Text = "label6";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.Location = new Point(26, 32);
+            label14.Name = "label14";
+            label14.Size = new Size(63, 17);
+            label14.TabIndex = 0;
+            label14.Text = "Rating-> ";
+            // 
+            // RDViewGB
+            // 
+            RDViewGB.Controls.Add(AuthorViewLB);
+            RDViewGB.Controls.Add(TypeViewLB);
+            RDViewGB.Controls.Add(label8);
+            RDViewGB.Controls.Add(label7);
+            RDViewGB.Controls.Add(RecipeNameViewLB);
+            RDViewGB.Controls.Add(label5);
+            RDViewGB.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            RDViewGB.Location = new Point(18, 216);
+            RDViewGB.Name = "RDViewGB";
+            RDViewGB.Size = new Size(237, 137);
+            RDViewGB.TabIndex = 0;
+            RDViewGB.TabStop = false;
+            RDViewGB.Text = "Recipe Details";
+            // 
+            // AuthorViewLB
+            // 
+            AuthorViewLB.AutoSize = true;
+            AuthorViewLB.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            AuthorViewLB.Location = new Point(149, 101);
+            AuthorViewLB.Name = "AuthorViewLB";
+            AuthorViewLB.Size = new Size(38, 15);
+            AuthorViewLB.TabIndex = 3;
+            AuthorViewLB.Text = "label6";
+            // 
+            // TypeViewLB
+            // 
+            TypeViewLB.AutoSize = true;
+            TypeViewLB.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            TypeViewLB.Location = new Point(149, 67);
+            TypeViewLB.Name = "TypeViewLB";
+            TypeViewLB.Size = new Size(38, 15);
+            TypeViewLB.TabIndex = 3;
+            TypeViewLB.Text = "label6";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(26, 98);
+            label8.Name = "label8";
+            label8.Size = new Size(69, 17);
+            label8.TabIndex = 2;
+            label8.Text = "Author - >";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(38, 65);
+            label7.Name = "label7";
+            label7.Size = new Size(57, 17);
+            label7.TabIndex = 2;
+            label7.Text = "Type -> ";
+            // 
+            // RecipeNameViewLB
+            // 
+            RecipeNameViewLB.AutoSize = true;
+            RecipeNameViewLB.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            RecipeNameViewLB.Location = new Point(149, 34);
+            RecipeNameViewLB.Name = "RecipeNameViewLB";
+            RecipeNameViewLB.Size = new Size(38, 15);
+            RecipeNameViewLB.TabIndex = 1;
+            RecipeNameViewLB.Text = "label6";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(30, 32);
+            label5.Name = "label5";
+            label5.Size = new Size(65, 17);
+            label5.TabIndex = 0;
+            label5.Text = "Name -> ";
             // 
             // contextMenuStrip1
             // 
@@ -360,6 +532,12 @@
             RecipeDetailsGB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)StarPB).EndInit();
             FormsMainPanel.ResumeLayout(false);
+            ViewingRecipePanel.ResumeLayout(false);
+            RatingViewGB.ResumeLayout(false);
+            RatingViewGB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)RaingPicBoxView).EndInit();
+            RDViewGB.ResumeLayout(false);
+            RDViewGB.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -391,5 +569,19 @@
         private Panel FormsMainPanel;
         private ContextMenuStrip contextMenuStrip1;
         private Button CloseAddRecipePanel;
+        private Panel ViewingRecipePanel;
+        private GroupBox RDViewGB;
+        private Label label5;
+        private Label RecipeNameViewLB;
+        private GroupBox RatingViewGB;
+        private Label label14;
+        private Label AuthorViewLB;
+        private Label TypeViewLB;
+        private Label label8;
+        private Label label7;
+        private GroupBox groupBox2;
+        private PictureBox RaingPicBoxView;
+        private Label RatingViewLB;
+        private Button CloseViewPanelBTN;
     }
 }
